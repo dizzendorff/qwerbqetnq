@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
+    <title>Signals</title>
+</head>
+<body>
+    <div class="container">
+        <div class="background"></div>
+
+        <!-- Надпись MINES с каждой буквой как отдельный объект -->
+        <h1 class="mines-title">
+            <span class="letter">M</span>
+            <span class="letter">I</span>
+            <span class="letter">N</span>
+            <span class="letter">E</span>
+            <span class="letter">S</span>
+        </h1>
+
+        <div class="grid" id="tileGrid"></div>
+
+        <button id="getSignalButton">
+            <img src="/assets/getSignal.png" alt="Получить сигнал">
+        </button>
+
+        <div class="image-row">
+            <button class="small-icon circle minus-button">
+                <img src="/assets/minus.png" alt="Minus">
+            </button>
+            <div class="trap-number">1</div>
+            <button class="small-icon circle plus-button">
+                <img src="/assets/plus.png" alt="Plus">
+            </button>
+        </div>
+
+        <div class="count-trap-text">КОΛ-ВО ΛОВУШЕК</div>
+
+        <div class="stars-container"></div>
+
+        <!-- Контейнер для анимации загрузки Lottie -->
+        <div id="loadingAnimation" class="hidden" style="width: 180px; height: 180px;"></div>
+    </div>
+    <script src="assets/main.js"></script>
+</body>
+</html>
