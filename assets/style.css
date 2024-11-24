@@ -1,0 +1,249 @@
+/* Отключаем вертикальную прокрутку страницы */
+html, body {
+    overflow: hidden; /* Отключить прокрутку */
+}
+
+body {
+    background-image: url('/assets/background.png'); /* Убедитесь, что путь правильный */
+    background-color: #0D0924; /* Темный фон */
+    background-size: cover; /* Растягиваем изображение на всю страницу */
+    background-repeat: no-repeat; /* Не повторяем изображение */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    position: relative;
+    text-align: center;
+}
+
+.background {
+    position: absolute;
+    top: 35px;
+    left: -35px;
+    width: calc(5 * 45px + 4 * 8px + 70px);
+    height: calc(5 * 45px + 4 * 8px + 70px);
+    background-image: url('/assets/backgroundPlitki.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: -1;
+    border-radius: 10px;
+}
+
+.mines-title {
+    position: absolute;
+    top: -47px; /* Смещение текста вниз на 5px */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 50px;
+    font-family: 'Inter', sans-serif;
+    line-height: 1;
+    display: inline-flex;
+    z-index: 1;
+}
+
+.letter {
+    font-weight: 900;
+    color: #C1AB19;
+    display: inline-block;
+    animation: float 1.5s ease-in-out infinite;
+    transform-origin: center;
+    -webkit-text-stroke: 0.5px #ffffff; /* Обводка цвета #C1AB19 */
+    text-shadow: 
+        0 0 8px rgba(193, 171, 25, 0.8),  /* Первый слой свечения */
+        0 0 16px rgba(193, 171, 25, 0.6), /* Второй слой свечения */
+        0 0 24px rgba(193, 171, 25, 0.4); /* Третий слой свечения */
+}
+
+/* Анимация для букв MINES */
+.letter:nth-child(2) { animation-delay: 0.1s; }
+.letter:nth-child(3) { animation-delay: 0.2s; }
+.letter:nth-child(4) { animation-delay: 0.3s; }
+.letter:nth-child(5) { animation-delay: 0.4s; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(5, 45px);
+    grid-template-rows: repeat(5, 45px);
+    gap: 8px;
+    margin-bottom: 20px;
+    margin-top: 70px;
+}
+
+.tile {
+    position: relative;
+    width: 45px;
+    height: 45px;
+    background: url('/assets/plitka.png') no-repeat center center / cover;
+    cursor: pointer;
+}
+
+.stars-container {
+    display: grid;
+    grid-template-columns: repeat(5, 45px);
+    grid-template-rows: repeat(5, 45px);
+    gap: 8px;
+    position: absolute;
+    top: 70px;
+    left: 0;
+}
+
+.star {
+    width: 32px;
+    height: 32px;
+    background: url('/assets/star.png') no-repeat center center / cover;
+    opacity: 0;
+    transition: opacity 1s;
+    position: relative;
+    top: 6.5px;
+    left: 6.5px;
+}
+
+button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    margin-top: 130px;
+    z-index: 2;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+    width: 135px;
+    height: auto;
+}
+
+button img {
+    width: 135px;
+    height: auto;
+    display: block;
+}
+
+button:disabled {
+    background-color: #031C53;
+}
+
+button:disabled img {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+button:active {
+    background-color: #061E5B;
+}
+
+.count-trap-text {
+    position: absolute;
+    top: 372px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 28px;
+    font-weight: 800;
+    font-family: 'Inter', sans-serif;
+    color: #ffffff;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.image-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    top: 414px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+button.small-icon.circle {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    position: relative;
+    top: -3px;
+}
+
+button.small-icon.circle img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.small-icon.rectangular {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    margin-top: -3px;
+}
+
+.image-row img {
+    margin-top: -5px;
+}
+
+.trap-number {
+    font-size: 32px;
+    font-weight: 800;
+    font-family: 'Inter', sans-serif;
+    color: #ffffff;
+    line-height: 1;
+    position: relative;
+    top: -6px;
+    min-width: 30px;
+    text-align: center;
+}
+
+#loadingAnimation {
+    position: absolute;
+    top: calc(50% - 68px); 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+#loadingAnimationContainer {
+    width: 90px; 
+    height: 90px;
+}
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: block; 
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.show-star {
+    animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+.fade-out {
+    animation: fadeOut 0.5s forwards;
+}
